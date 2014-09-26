@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1411757397 source:/home/warren2/codeblocks/PrimeFinder/main.cpp
+	<iostream>
+	"FindPrimes.h"
+
+1411757350 /home/warren2/codeblocks/PrimeFinder/include/FindPrimes.h
+	<iostream>
+	<limits>
+	<math.h>
+
+1411758402 source:/home/warren2/codeblocks/PrimeFinder/src/FindPrimes.cpp
+	<iostream>
+	"FindPrimes.h"
+

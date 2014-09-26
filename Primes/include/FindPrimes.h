@@ -1,9 +1,9 @@
 /**
-* PrimeFinder Test Program
-*         and
-* FindPrimes Library
+*           PrimeFinder Test Program  v 1.0.2
+*                         and
+*              FindPrimes Library  v 0.1.5
 *
-* Copyright JWarren 2014
+*                Copyright JWarren 2014
 *
 * This program is distributed in the hope that it will be useful,
 * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -13,6 +13,7 @@
 
 
 #include <iostream>
+#include <limits>
 #include <math.h>
 
 using namespace std;
@@ -30,24 +31,65 @@ class FindPrimes
         FindPrimes();
         virtual ~FindPrimes();
 
-        void findAll(); //prints all primes from 2 to 2e64-1 CAUTION - very slow could take years to finish
-        void findInRange(prec nStart, prec nEnd); //prints all primes in a given range
-        prec findNthPrime(int pNum); //returns nth prime in range of all primes
-        //returns nth prime of a given range
-        prec findNthPrime(prec nStart, prec nEnd, int pNum); //Does not return nth prime of all primes
+        /**
+        *   \brief searchPrimes(); prints all primes to screen
+        *   very slow
+        **/
+        void searchPrimes();
+
+        /**
+        *   \brief prec - long long int value
+        *          nStart - start of search range
+        *          nEnd - end of search range
+        **/
+        void searchPrimes(prec nStart, prec nEnd);
+
+        /**
+        *   \brief pNum - searches for nth prime of all primes
+        **/
+		prec searchPrimes(int pNum);
+
+		/**
+		*   \brief  nStart  - start of search range
+		*           nEnd    - end of search range
+		*           pNum    - returns nth prime of the given range
+		*           return value is of the type 'long long int'
+		**/
+		prec searchPrimes(prec nStart, prec nEnd, int pNum);
+
+		/**
+		*   \brief  tNum    - Target number for prime factorial search
+		*           prints all prime factorials of target number to screen
+		**/
+		void searchPrimeFactorials(prec tNum);
+
+		/**
+		*   \brief tNum     - Target number for prime factorial search
+		*          maxP     - Bool for returning highest factorial is has factorials
+		*          maxP = true for return highest, false checks to see if target has
+        *          prime factorials
+		**/
+		prec searchPrimeFactorials(prec tNum, bool maxP);
+
+
 
     protected:
 
+
+
     private:
-    prec pStart;  //start of primes search range
-    prec pEnd;    //end of primes search range
-    prec pCheck = 2;  //verification variable
-    prec curPrime; //stores most recent prime number in search
-    const prec pMax = 2e64-1;    //max value that can be searched for
-    prec pRoot;   //root of possible prime
-    int counter;  //used for finding nth prime
-    bool dblCheck = true;
-    prec nthPrime;
+        prec curPrime;			//passed by ref
+        prec curFactorial;		//passed by ref
+		prec counter;			//passed by ref
+		prec nthPrime;
+        const prec pMax = std::numeric_limits<prec>::max();  //set pMax to the max value of usigned long long int for the current system
+
+		void primeFinder(prec rangeStart, prec rangeEnd, int pNum, bool printScreen, bool runState );
+
+        void factorialFinder(prec searchStart, prec targetNum, bool maxP, bool hasFactorial, bool printScreen, bool runState);
+
+        void checkPrime(prec checkNum, bool printScreen, bool runState);
+
 };
 
 #endif // FINDPRIMES_H
