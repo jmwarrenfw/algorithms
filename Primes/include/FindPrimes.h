@@ -78,9 +78,9 @@ class FindPrimes
 
 
     private:
-        prec curPrime;			//passed by ref
-        prec curFactorial;		//passed by ref
-		prec counter;			//passed by ref
+        prec curPrime;			
+        prec curFactorial;		
+		prec counter;	
 		prec nthPrime;
         const prec pMax = std::numeric_limits<prec>::max();  //set pMax to the max value of usigned long long int for the current system
 
